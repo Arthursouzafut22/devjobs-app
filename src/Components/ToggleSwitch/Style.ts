@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 // Estilização do switch container (label)
 export const SwitchContainer = styled.label`
-  --switch-bg: rgb(135, 150, 165);
+  --switch-bg: #ffffff;
   --switch-width: 48px;
   --switch-height: 20px;
   --circle-diameter: 32px;

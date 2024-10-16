@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
-const GlobalStyle = createGlobalStyle`
+export const GlobalStyle = createGlobalStyle`
 
 *{
     padding: 0;
@@ -10,6 +10,7 @@ const GlobalStyle = createGlobalStyle`
 
 body{
     font-family: 'Arial', sans-serif;
+    background-color:#F2F2F2;
 }
 
 a{
@@ -21,5 +22,3 @@ ul>li{
     padding: 0;
     list-style: none;
 }`;
-
-export default GlobalStyle;
