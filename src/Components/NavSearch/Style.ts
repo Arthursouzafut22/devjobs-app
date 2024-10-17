@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Section = styled.section`
+export const Section = styled.section<{ checkDark: boolean | null }>`
   position: fixed;
   top: 22%;
   left: 50%;
@@ -10,13 +10,14 @@ export const Section = styled.section`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #ffffff;
+  background-color: ${(props) => (props.checkDark ? "#19212E" : "#ffffff")};
   border-radius: 0.375rem;
   gap: 12px;
 `;
 
 type PropsWidth = {
   width?: number;
+  checkDark: boolean | null;
 };
 
 export const DivSerach = styled.div<PropsWidth>`
@@ -25,7 +26,8 @@ export const DivSerach = styled.div<PropsWidth>`
   flex-direction: row-reverse;
   justify-content: start;
   gap: 10px;
-  border-right: 1px solid #acafb4;
+  border-right: 1px solid
+    ${(props) => (props.checkDark ? "#323843" : "#acafb4")};
   padding: 30px 15px;
   max-width: ${(props) => (props.width ? "width" : "350px")};
   width: 100%;
@@ -33,7 +35,7 @@ export const DivSerach = styled.div<PropsWidth>`
   height: 89px;
 `;
 
-export const DivBox = styled.div`
+export const DivBox = styled.div<{ checkDark: boolean | null }>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -61,6 +63,7 @@ export const DivBox = styled.div`
     font-size: 17px;
     font-size: 100%;
     font-weight: 700;
+    color: ${(props) => (props.checkDark ? "#ffffff" : "#000000")};
   }
 
   button {
@@ -82,10 +85,11 @@ export const DivBox = styled.div`
   }
 `;
 
-export const Input = styled.input`
+export const Input = styled.input<{ checkDark: boolean | null }>`
   font-size: 17px;
   color: #acafb4;
   border: none;
   outline: none;
   padding: 5px;
+  background-color: ${(props) => (props.checkDark ? "#19212E" : "#ffffff")};
 `;

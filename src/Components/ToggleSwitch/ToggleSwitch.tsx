@@ -1,10 +1,17 @@
 import * as S from "./Style";
+import { AuthJobs } from "../../Context/ContextJobs";
 
 const ToggleSwitch = () => {
+  const { checkDark, onChangeTeme } = AuthJobs();
+
   return (
     <>
       <S.SwitchContainer>
-        <S.SwitchInputChecked type="checkbox" />
+        <S.SwitchInputChecked
+          type="checkbox"
+          checked={checkDark}
+          onChange={onChangeTeme}
+        />
         <S.Slider>
           <S.Circle />
         </S.Slider>
