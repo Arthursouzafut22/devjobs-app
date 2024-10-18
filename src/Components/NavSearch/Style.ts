@@ -1,11 +1,20 @@
 import styled from "styled-components";
 
-export const Section = styled.section<{ checkDark: boolean | null }>`
-  position: fixed;
-  top: 22%;
+export const Wrapper = styled.section`
+  position: relative;
+  max-width: 1150px;
+  width: 100%;
+  padding: 0px 20px;
+  margin: 0 auto;
+  box-sizing: border-box;
+`;
+
+export const Section = styled.div<{ checkDark: boolean | null }>`
+  position: absolute;
+  top: -0% !important;
   left: 50%;
-  transform: translate(-50%, -50%);
-  max-width: 1120px;
+  transform: translate(-50%, 30%);
+  max-width: 1118px;
   width: 100%;
   display: flex;
   align-items: center;

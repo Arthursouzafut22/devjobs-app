@@ -1,6 +1,6 @@
 import { useQuery } from "react-query";
 
-type PropsJobs = {
+export type PropsJobs = {
   id: number;
   company: string;
   logo: string;

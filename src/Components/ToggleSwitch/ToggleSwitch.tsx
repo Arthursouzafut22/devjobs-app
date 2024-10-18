@@ -1,5 +1,5 @@
 import * as S from "./Style";
-import { AuthJobs } from "../../Context/ContextJobs";
+import { AuthJobs } from "../../Context/ContextThemeColor";
 
 const ToggleSwitch = () => {
   const { checkDark, onChangeTeme } = AuthJobs();

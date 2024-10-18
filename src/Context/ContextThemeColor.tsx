@@ -35,6 +35,7 @@ const StorageJobs = ({ children }: React.PropsWithChildren) => {
     setCheckDark(JSON.parse(getTheme ?? "false"));
   }, []);
 
+  // Mudar color do body...
   useEffect(() => {
     const bodyBackground = window.document.body;
 
