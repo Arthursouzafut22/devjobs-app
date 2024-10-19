@@ -83,27 +83,27 @@ export const DivBox = styled.div<Pick<PropsWidth, "checkDark" | "mobile">>`
     display: ${(props) => (props.mobile ? "none" : "block")};
     color: ${(props) => (props.checkDark ? "#ffffff" : "#000000")};
   }
+`;
 
-  button {
-    font-size: 17px;
-    display: ${(props) => (props.mobile ? "flex" : "flex")};
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    background-color: #5762e0;
-    color: #ffffff;
-    padding: 0px 16px;
-    max-width: ${(props) => (props.mobile ? "60px" : "128px")};
-    width: 100%;
-    height: 55px;
-    cursor: pointer;
-    border-radius: 0.375rem;
-    border: none;
-    transition: 0.3s;
+export const WebButton = styled.button<{ mobile: boolean }>`
+  font-size: 17px;
+  display: ${(props) => (props.mobile ? "flex" : "flex")};
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  background-color: #5762e0;
+  color: #ffffff;
+  padding: ${(props) => (props.mobile ? "0px 12px" : "0px 16px")};
+  max-width: ${(props) => (props.mobile ? "60px" : "128px")};
+  width: 100%;
+  height: 55px;
+  cursor: pointer;
+  border-radius: 0.375rem;
+  border: none;
+  transition: 0.3s;
 
-    &:hover {
-      opacity: 0.8;
-    }
+  &:hover {
+    opacity: 0.8;
   }
 `;
 
@@ -115,4 +115,11 @@ export const Input = styled.input<{ checkDark: boolean | null }>`
   padding: 5px;
   background-color: ${(props) => (props.checkDark ? "#19212E" : "#ffffff")};
   width: 100%;
+`;
+
+export const MobileButton = styled.button`
+  padding: 5px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
 `;

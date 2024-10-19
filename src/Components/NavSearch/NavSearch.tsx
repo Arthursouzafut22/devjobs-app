@@ -4,6 +4,7 @@ import SvgSearch from "../../assets/imagens/icon-search.svg";
 import SvgLocation from "../../assets/imagens/icon-location.svg";
 import { AuthJobs } from "../../Context/ContextThemeColor";
 import { IoMdSearch } from "react-icons/io";
+import { FaFilter } from "react-icons/fa";
 import { useEffect } from "react";
 
 const NavSearch: React.FC = () => {
@@ -48,11 +49,20 @@ const NavSearch: React.FC = () => {
           <img src={SvgLocation} alt="Location" />
         </S.DivSearch>
         <S.DivBox checkDark={checkDark} mobile={mobile}>
-          <input type="checkbox" name="check" id="check" />
-          <p>Full Time Only</p>
-          <button>
+          {mobile ? (
+            <S.MobileButton>
+              <FaFilter style={{ fontSize: "20px", color: "#6E8098" }} />
+            </S.MobileButton>
+          ) : (
+            <>
+              <input type="checkbox" name="check" id="check" />
+              <p>Full Time Only</p>
+            </>
+          )}
+
+          <S.WebButton mobile={mobile}>
             {mobile ? <IoMdSearch style={{ fontSize: "30px" }} /> : "Search"}
-          </button>
+          </S.WebButton>
         </S.DivBox>
       </S.Section>
     </S.Wrapper>

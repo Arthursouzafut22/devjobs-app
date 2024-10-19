@@ -15,7 +15,7 @@ export const DivCard = styled.div<{ checkDark: boolean | null }>`
     propps.checkDark ? colorGunmetal : colorWhite};
   padding: 25px;
   cursor: pointer;
-  flex: 1 0 352px;
+  flex: 1 0 290px;
   border-radius: 0.375rem;
   width: 100%;
   height: 237px;
