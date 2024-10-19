@@ -48,7 +48,6 @@ export const DivTime = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-top: 5px;
 
   p {
     color: ${colorDark};

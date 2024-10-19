@@ -25,36 +25,44 @@ export const Section = styled.div<{ checkDark: boolean | null }>`
 `;
 
 type PropsWidth = {
+  mobile: boolean | null;
+  borderMobile: boolean | null;
   width?: number;
   checkDark: boolean | null;
 };
 
-export const DivSerach = styled.div<PropsWidth>`
-  display: flex;
+export const DivSearch = styled.div<PropsWidth>`
+  display: ${(props) => (props.mobile ? "none" : "flex")};
   align-items: center;
   flex-direction: row-reverse;
   justify-content: start;
   gap: 10px;
-  border-right: 1px solid
-    ${(props) => (props.checkDark ? "#323843" : "#acafb4")};
   padding: 30px 15px;
   max-width: ${(props) => (props.width ? "width" : "350px")};
-  width: 100%;
+  width: ${(props) => (props.mobile ? "90%" : "100%")};
   margin: 0 auto;
   height: 89px;
+  border-right: 1px solid
+    ${(props) =>
+      props.borderMobile
+        ? "transparent"
+        : props.checkDark
+        ? "#323843"
+        : "#acafb4"};
 `;
 
-export const DivBox = styled.div<{ checkDark: boolean | null }>`
+export const DivBox = styled.div<Pick<PropsWidth, "checkDark" | "mobile">>`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: ${(props) => (props.mobile ? "end" : "center")};
   gap: 10px;
   padding: 30px 16px 30px 0px;
-  max-width: 300px;
+  max-width: ${(props) => (props.mobile ? "90px" : "300px")};
   width: 100%;
   height: 89px;
 
   input[type="checkbox"] {
+    display: ${(props) => (props.mobile ? "none" : "block")};
     appearance: none;
     -webkit-appearance: checkbox;
     width: 25px;
@@ -72,17 +80,22 @@ export const DivBox = styled.div<{ checkDark: boolean | null }>`
     font-size: 17px;
     font-size: 100%;
     font-weight: 700;
+    display: ${(props) => (props.mobile ? "none" : "block")};
     color: ${(props) => (props.checkDark ? "#ffffff" : "#000000")};
   }
 
   button {
     font-size: 17px;
+    display: ${(props) => (props.mobile ? "flex" : "flex")};
+    align-items: center;
+    justify-content: center;
     font-weight: 700;
     background-color: #5762e0;
     color: #ffffff;
-    padding: 18px 16px;
-    max-width: 128px;
+    padding: 0px 16px;
+    max-width: ${(props) => (props.mobile ? "60px" : "128px")};
     width: 100%;
+    height: 55px;
     cursor: pointer;
     border-radius: 0.375rem;
     border: none;
@@ -101,4 +114,5 @@ export const Input = styled.input<{ checkDark: boolean | null }>`
   outline: none;
   padding: 5px;
   background-color: ${(props) => (props.checkDark ? "#19212E" : "#ffffff")};
+  width: 100%;
 `;
