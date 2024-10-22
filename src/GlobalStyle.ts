@@ -9,7 +9,8 @@ export const GlobalStyle = createGlobalStyle`
 }
 
 body{
-    font-family: 'Arial', sans-serif;
+  
+    font-family: "Kumbh Sans", sans-serif;
     background-color:#F2F2F2;
 }
 

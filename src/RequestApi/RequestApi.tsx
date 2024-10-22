@@ -1,5 +1,10 @@
 import { useQuery } from "react-query";
 
+type RequirementsProps = {
+  content: string;
+  items: string[];
+};
+
 export type PropsJobs = {
   id: number;
   company: string;
@@ -12,6 +17,7 @@ export type PropsJobs = {
   website: string;
   apply: string;
   description: string;
+  requirements: RequirementsProps;
 };
 
 const fetchJobs = async (): Promise<PropsJobs[]> => {

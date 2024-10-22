@@ -1,7 +1,8 @@
 import { GlobalStyle } from "./GlobalStyle";
 import Header from "./Components/Header/Header";
-import Main from "./Components/Main/Main";
 import StorageJobs from "./Context/ContextThemeColor";
+import Router from "./Router/Router";
+import { RouterProvider } from "react-router-dom";
 
 function App() {
   return (
@@ -9,7 +10,7 @@ function App() {
       <StorageJobs>
         <GlobalStyle />
         <Header />
-        <Main />
+        <RouterProvider router={Router} />
       </StorageJobs>
     </>
   );

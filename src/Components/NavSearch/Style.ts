@@ -11,9 +11,9 @@ export const Wrapper = styled.section`
 
 export const Section = styled.div<{ checkDark: boolean | null }>`
   position: absolute;
-  top: -0% !important;
+  top: 0%;
   left: 50%;
-  transform: translate(-50%, 30%);
+  transform: translate(-50%, -45%);
   max-width: 1118px;
   width: 100%;
   display: flex;
@@ -22,6 +22,12 @@ export const Section = styled.div<{ checkDark: boolean | null }>`
   background-color: ${(props) => (props.checkDark ? "#19212E" : "#ffffff")};
   border-radius: 0.375rem;
   gap: 12px;
+  z-index: 100;
+
+  &.fixo {
+    position: fixed;
+    border: 1px solid wheat;
+  }
 `;
 
 type PropsWidth = {

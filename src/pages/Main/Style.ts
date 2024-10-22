@@ -11,3 +11,7 @@ export const Main = styled.main`
   padding: 0px 18px;
   row-gap: 50px;
 `;
+
+export const DivWrapper = styled.div`
+  padding: 0px 20px;
+`;

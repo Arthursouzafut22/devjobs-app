@@ -6,10 +6,12 @@ const colorWhite = "#ffffff";
 const colorBlue = "#5762e5";
 const colorGunmetal = "#19212E";
 
+export const LinkJobjs = styled.a``;
+
 export const DivCard = styled.div<{ checkDark: boolean | null }>`
-  display: flex;
+  /* display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: center; */
   gap: 12px;
   background-color: ${(propps) =>
     propps.checkDark ? colorGunmetal : colorWhite};
@@ -21,7 +23,19 @@ export const DivCard = styled.div<{ checkDark: boolean | null }>`
   height: 237px;
   position: relative;
 
-  figure {
+
+  a{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* align-items:center; */
+    gap: 18px !important;
+    border:1px solid wheat;
+    height: 100%;
+
+
+
+    figure {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -42,6 +56,30 @@ export const DivCard = styled.div<{ checkDark: boolean | null }>`
     font-size: 22px;
     color: ${(props) => (props.checkDark ? colorWhite : "#000000")};
   }
+    
+  }
+
+  /* figure {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 1rem;
+    position: absolute;
+    top: -10%;
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+  h2 {
+    font-size: 22px;
+    color: ${(props) => (props.checkDark ? colorWhite : "#000000")};
+  } */
 `;
 
 export const DivTime = styled.div`
