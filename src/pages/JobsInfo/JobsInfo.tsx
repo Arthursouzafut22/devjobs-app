@@ -44,7 +44,9 @@ const JobsInfo: React.FC = () => {
               <h1>{findJobs?.position}</h1>
               <p>{findJobs?.location}</p>
             </S.DivWrapper>
-            <S.BlueButton>Apply Now</S.BlueButton>
+            <S.BlueButton onClick={() => (window.location.href = `${findJobs?.apply}`)}>
+              Apply Now
+            </S.BlueButton>
           </S.DivInfoTwo>
 
           <p style={{ color: "#6d7fa4", marginTop: "30px", lineHeight: "1.5" }}>
