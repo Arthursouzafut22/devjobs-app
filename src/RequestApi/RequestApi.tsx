@@ -18,12 +18,13 @@ export type PropsJobs = {
   apply: string;
   description: string;
   requirements: RequirementsProps;
+  role: RequirementsProps;
 };
 
 const fetchJobs = async (): Promise<PropsJobs[]> => {
   const $es = await fetch("data.json");
-  const resposta = await $es.json();
-  return resposta;
+  const $esposta = await $es.json();
+  return $esposta;
 };
 
 export const useFetchJobs = () => {

@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import * as S from "./Style";
 import SvgSearch from "../../assets/imagens/icon-search.svg";
 import SvgLocation from "../../assets/imagens/icon-location.svg";
@@ -6,12 +6,12 @@ import { AuthJobs } from "../../Context/ContextThemeColor";
 import { IoMdSearch } from "react-icons/io";
 import { FaFilter } from "react-icons/fa";
 import { useEffect } from "react";
+import { UseMedia } from "../../Hooks/UseMedia";
 
 const NavSearch = () => {
-  const { checkDark } = AuthJobs();
-  const [match] = useState("(max-width: 998px)");
-  const [mobile, setMobile] = useState(false);
+  const { mobile } = UseMedia("(max-width: 998px)");
   const refNav = useRef<HTMLDivElement | null>(null);
+  const { checkDark } = AuthJobs();
   const element = refNav.current;
 
   // Scroll effect search nav...
@@ -30,18 +30,6 @@ const NavSearch = () => {
     // window.addEventListener("scroll", scrollNavSearch);
     // return () => window.removeEventListener("scroll", scrollNavSearch);
   }, [element]);
-
-  // Mobile....
-  useEffect(() => {
-    const mathDay = () => {
-      const { matches } = matchMedia(match);
-      setMobile(matches);
-    };
-    window.addEventListener("resize", mathDay);
-    mathDay();
-
-    return () => window.removeEventListener("resize", mathDay);
-  }, [match]);
 
   return (
     <S.Wrapper>

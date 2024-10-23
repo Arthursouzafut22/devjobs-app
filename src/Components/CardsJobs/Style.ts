@@ -23,63 +23,37 @@ export const DivCard = styled.div<{ checkDark: boolean | null }>`
   height: 237px;
   position: relative;
 
-
-  a{
+  a {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     /* align-items:center; */
     gap: 18px !important;
-    border:1px solid wheat;
+    border: 1px solid wheat;
     height: 100%;
 
-
-
     figure {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 3rem;
-    height: 3rem;
-    border-radius: 1rem;
-    position: absolute;
-    top: -10%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 1rem;
+      position: absolute;
+      top: -10%;
 
-    img {
-      display: block;
-      max-width: 100%;
-      height: auto;
+      img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+      }
+    }
+
+    h2 {
+      font-size: 22px;
+      color: ${(props) => (props.checkDark ? colorWhite : "#000000")};
     }
   }
-
-  h2 {
-    font-size: 22px;
-    color: ${(props) => (props.checkDark ? colorWhite : "#000000")};
-  }
-    
-  }
-
-  /* figure {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 3rem;
-    height: 3rem;
-    border-radius: 1rem;
-    position: absolute;
-    top: -10%;
-
-    img {
-      display: block;
-      max-width: 100%;
-      height: auto;
-    }
-  }
-
-  h2 {
-    font-size: 22px;
-    color: ${(props) => (props.checkDark ? colorWhite : "#000000")};
-  } */
 `;
 
 export const DivTime = styled.div`
