@@ -2,31 +2,32 @@ import * as S from "./Style";
 import { useParams } from "react-router-dom";
 import { useFetchJobs } from "../../RequestApi/RequestApi";
 import { UseMedia } from "../../Hooks/UseMedia";
+import { AuthJobs } from "../../Context/ContextThemeColor";
 import Footer from "../../Components/Footer/Footer";
 
 const JobsInfo: React.FC = () => {
-  const { data } = useFetchJobs();
-  const { position } = useParams();
   const { mobile } = UseMedia("(max-width: 767px)");
-
+  const { checkDark } = AuthJobs();
+  const { position } = useParams();
+  const { data } = useFetchJobs();
   if (!data) return null;
   const findJobs = data.find((i) => i.position === position);
-  
 
   return (
     <S.SectionJobs>
       <S.DivJobs>
         {""}
-        <S.DivCompany mobile={mobile}>
+        <S.DivCompany mobile={mobile} checkDark={checkDark}>
           <figure style={{ background: `${findJobs?.logoBackground}` }}>
             <img src={"../" + findJobs?.logo} alt={findJobs?.company} />
           </figure>
-          <S.DivScoot mobile={mobile}>
+          <S.DivScoot mobile={mobile} checkDark={checkDark}>
             <div>
               <h2>{findJobs?.company}</h2>
               <p>{findJobs?.website}</p>
             </div>
             <S.Button
+              checkDark={checkDark}
               onClick={() => (window.location.href = `${findJobs?.apply}`)}
             >
               Company Site
@@ -36,9 +37,9 @@ const JobsInfo: React.FC = () => {
         {""}
 
         {""}
-        <S.DivInfo>
+        <S.DivInfo mobile={mobile} checkDark={checkDark}>
           <S.DivInfoTwo mobile={mobile}>
-            <S.DivWrapper mobile={mobile}>
+            <S.DivWrapper mobile={mobile} checkDark={checkDark}>
               <S.DivTime>
                 <p>{findJobs?.postedAt}</p>
                 {"•"}
@@ -47,7 +48,8 @@ const JobsInfo: React.FC = () => {
               <h1>{findJobs?.position}</h1>
               <p>{findJobs?.location}</p>
             </S.DivWrapper>
-            <S.BlueButton mobile={mobile}
+            <S.BlueButton
+              mobile={mobile}
               onClick={() => (window.location.href = `${findJobs?.apply}`)}
             >
               Apply Now
@@ -58,7 +60,7 @@ const JobsInfo: React.FC = () => {
             {findJobs?.description}
           </p>
           {""}
-          <S.DivRequirements>
+          <S.DivRequirements checkDark={checkDark}>
             <h2>requirements</h2>
             <p>{findJobs?.requirements.content}</p>
 
@@ -73,7 +75,7 @@ const JobsInfo: React.FC = () => {
           </S.DivRequirements>
           {""}
 
-          <S.DivRole>
+          <S.DivRole checkDark={checkDark}>
             <h2>What You Will Do</h2>
             <p>{findJobs?.role.content}</p>
 
@@ -90,8 +92,7 @@ const JobsInfo: React.FC = () => {
         </S.DivInfo>
         {""}
       </S.DivJobs>
-      {findJobs && <Footer findJobs={findJobs}/>}
-
+      {findJobs && <Footer findJobs={findJobs} />}
     </S.SectionJobs>
   );
 };

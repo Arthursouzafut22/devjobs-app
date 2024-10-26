@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Header = styled.header`
-  background-image: url("src/assets/imagens/bg-pattern-header.svg");
+  background-image: url("../src/assets/imagens/bg-pattern-header.svg");
   background-position: 50% 100%;
   background-repeat: no-repeat;
   background-size: cover;

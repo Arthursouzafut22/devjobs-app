@@ -9,7 +9,7 @@ const ToggleSwitch = () => {
       <S.SwitchContainer>
         <S.SwitchInputChecked
           type="checkbox"
-          checked={checkDark}
+          checked={checkDark ?? false}
           onChange={onChangeTeme}
         />
         <S.Slider>

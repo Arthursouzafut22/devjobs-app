@@ -1,18 +1,20 @@
 import * as S from "../../pages/JobsInfo/Style";
 import { PropsJobs } from "../../RequestApi/RequestApi";
 import { UseMedia } from "../../Hooks/UseMedia";
+import { AuthJobs } from "../../Context/ContextThemeColor";
 
 const Footer = ({ findJobs }: { findJobs: PropsJobs }) => {
   const { mobile } = UseMedia("(max-width: 767px)");
-  
+  const { checkDark } = AuthJobs();
+
   return (
-    <S.Footer>
+    <S.Footer checkDark={checkDark}>
       <div
         style={{
-          maxWidth: "737px",
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
+          maxWidth: "46.06rem",
           margin: "0 auto",
           flex: "1",
         }}

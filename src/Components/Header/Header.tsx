@@ -4,7 +4,7 @@ import { FaSun, FaMoon } from "react-icons/fa";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 
 const stylesIcon: React.CSSProperties = {
-  fontSize: "20px",
+  fontSize: "1.25rem",
   color: "#ffffff",
 };
 

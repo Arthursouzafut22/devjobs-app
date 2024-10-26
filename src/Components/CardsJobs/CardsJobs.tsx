@@ -9,11 +9,11 @@ const CardsJobs = ({ jobs }: { jobs: PropsJobs }) => {
 
   return (
     <>
-      <S.DivCard checkDark={checkDark}>
-        <NavLink
-          to={`jobs/${encodeURI(jobs.position)}`}
-          style={{ display: "block" }}
-        >
+      <NavLink
+        to={`jobs/${encodeURI(jobs.position)}`}
+        style={{ display: "block", flex: "1 0 290px" }}
+      >
+        <S.DivCard checkDark={checkDark}>
           <figure style={{ background: `${jobs.logoBackground}` }}>
             <img src={jobs.logo} alt={jobs.company} />
           </figure>
@@ -25,8 +25,8 @@ const CardsJobs = ({ jobs }: { jobs: PropsJobs }) => {
           <h2>{jobs.position}</h2>
           <S.Company>{jobs.company}</S.Company>
           <S.Location>{jobs.location}</S.Location>
-        </NavLink>
-      </S.DivCard>
+        </S.DivCard>
+      </NavLink>
     </>
   );
 };
