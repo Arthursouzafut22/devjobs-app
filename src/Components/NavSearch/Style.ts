@@ -9,11 +9,19 @@ export const Wrapper = styled.section`
   box-sizing: border-box;
 `;
 
-export const Section = styled.div<{ checkDark: boolean | null }>`
-  position: absolute;
+type PropsSearchBar={
+  searchBar: boolean;
+  checkDark: boolean | null 
+}
+
+export const Section = styled.div<PropsSearchBar>`
+  position: ${(props) => props.searchBar ? "fixed" : "absolute"};
   top: 0%;
   left: 50%;
-  transform: translate(-50%, -45%);
+  /* transform:translate(-50%, -45%); */
+  transform: ${(props) => props.searchBar ? "translate(-50%, 5%)" : "translate(-50%, -45%)"};
+  box-shadow: ${(props) => props.searchBar ? "0 0 32px -4px rgba(139, 92, 246, 0.5)": "0 0 0 0 0"};
+  will-change: opacity;
   max-width: 1118px;
   width: 100%;
   display: flex;
@@ -22,7 +30,10 @@ export const Section = styled.div<{ checkDark: boolean | null }>`
   background-color: ${(props) => (props.checkDark ? "#19212E" : "#ffffff")};
   border-radius: 0.375rem;
   gap: 12px;
-  z-index: 100;
+  z-index: 8880;
+  transition: none;
+  backface-visibility: hidden;
+
 
   &.fixo {
     position: fixed;

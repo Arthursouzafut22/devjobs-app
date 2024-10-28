@@ -1,24 +1,31 @@
 import * as S from "./Style";
 import CardsJobs from "../../Components/CardsJobs/CardsJobs";
-import { useFetchJobs } from "../../RequestApi/RequestApi";
 import NavSearch from "../../Components/NavSearch/NavSearch";
 import { useLocation } from "react-router-dom";
 import { AuthFilterJobs } from "../../Context/ContextFilterJobs";
+import { Suspense } from "react";
 
 const Main: React.FC = () => {
-  const { positionn, locationn, checkLength, erroPosition, erroLocation } =
-    AuthFilterJobs();
-  const { data, isLoading } = useFetchJobs();
+  const {
+    positionn,
+    locationn,
+    checkLength,
+    erroPosition,
+    erroLocation,
+    fullTime,
+    data,
+  } = AuthFilterJobs();
   const location = useLocation();
-  if (!data) return null;
 
-  const listItems =
+  const conditionItems =
     positionn.length > 0
       ? positionn
       : locationn.length > 0
       ? locationn
       : checkLength
       ? data
+      : fullTime.length > 0
+      ? fullTime
       : data;
 
   return (
@@ -28,10 +35,13 @@ const Main: React.FC = () => {
         {erroPosition || erroLocation ? (
           <p style={{ color: "#ffffff" }}>Nenhum Job encontrado...</p>
         ) : (
-          listItems &&
-          listItems.map((jobs) => <CardsJobs jobs={jobs} key={jobs.id} />)
+          conditionItems &&
+          conditionItems.map((jobs) => (
+            <Suspense fallback={<p>Loading jobs...</p>}>
+              <CardsJobs jobs={jobs} key={jobs.id} />
+            </Suspense>
+          ))
         )}
-        {isLoading && <p>Carregando...</p>}
       </S.Main>
     </>
   );

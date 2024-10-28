@@ -31,5 +31,6 @@ export const useFetchJobs = () => {
   return useQuery<PropsJobs[]>({
     queryKey: ["Jobs"],
     queryFn: fetchJobs,
+    suspense: true,
   });
 };

@@ -1,17 +1,17 @@
-import { useRef } from "react";
+import { useRef, useState, useLayoutEffect } from "react";
 import * as S from "./Style";
 import SvgSearch from "../../assets/imagens/icon-search.svg";
 import SvgLocation from "../../assets/imagens/icon-location.svg";
 import { AuthJobs } from "../../Context/ContextThemeColor";
 import { IoMdSearch } from "react-icons/io";
 import { FaFilter } from "react-icons/fa";
-import { useEffect } from "react";
 import { UseMedia } from "../../Hooks/UseMedia";
 import { AuthFilterJobs } from "../../Context/ContextFilterJobs";
 
 const NavSearch = () => {
   const { mobile } = UseMedia("(max-width: 998px)");
   const refNav = useRef<HTMLDivElement | null>(null);
+  const [searchBar, setSearchBar] = useState(false);
   const {
     filterJobs,
     inputByTitlle,
@@ -23,11 +23,29 @@ const NavSearch = () => {
   const element = refNav.current;
 
   // Scroll effect search nav...
-  useEffect(() => {}, [element]); //  Nada por enquanto...
+  useLayoutEffect(() => {
+    function scrollNavSearch() {
+      if (element) {
+        const top = element.getBoundingClientRect().top;
+
+        if (Math.floor(top) < 0) {
+          setSearchBar(true);
+        }
+        // if (Math.floor(top) > 0) {
+        //   setSearchBar(false);
+        // }
+      }
+    }
+
+    scrollNavSearch();
+    window.addEventListener("scroll", scrollNavSearch);
+
+    return () => window.removeEventListener("scroll", scrollNavSearch);
+  }, [element]); //  Nada por enquanto...
 
   return (
     <S.Wrapper>
-      <S.Section checkDark={checkDark} ref={refNav}>
+      <S.Section checkDark={checkDark} ref={refNav} searchBar={searchBar}>
         <S.DivSearch
           width={450}
           checkDark={checkDark}
@@ -81,23 +99,3 @@ const NavSearch = () => {
 };
 
 export default NavSearch;
-
-// function scrollNavSearch() {
-//   if (element) {
-//     const top = element.getBoundingClientRect().top;
-
-//     if (Math.floor(top) < 0) {
-//       element.style.position = "fixed";
-//       element.style.zIndex = "100";
-
-//     } else if (Math.floor(top) > 0) {
-//       element.style.position = "absolute";
-//       element.style.zIndex = "100";
-//     }
-//   }
-// }
-
-// window.addEventListener("scroll", scrollNavSearch);
-// scrollNavSearch();
-
-// return () => window.removeEventListener("scroll", scrollNavSearch);

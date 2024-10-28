@@ -14,6 +14,7 @@ type PropsContext = {
   erroLocation: boolean;
   erroPosition: boolean;
   checkTime: boolean;
+  data: PropsJobs[];
 };
 
 const ContextFill = createContext<PropsContext | null>(null);
@@ -67,13 +68,17 @@ const UseContextJobs = ({ children }: React.PropsWithChildren) => {
         return item;
       });
     }
-
     checKJobsLocation(valueLocation, location);
     checKJobsPosition(valueTitlle, titlee);
 
     setPositionn(titlee ?? []);
     setLocationn(location ?? []);
     setCheckLength(valueLocation?.length === 0 && valueTitlle?.length === 0);
+
+   
+
+    // inputByLocation.current.value = "";
+    // inputByTitlle.current.value = "";
   }
 
   // Verificar se exite jobs por Localização...
@@ -109,11 +114,19 @@ const UseContextJobs = ({ children }: React.PropsWithChildren) => {
     if (event.target.checked) {
       full = data?.filter((i) => i.contract === "Full Time");
       setFullTime(full || []);
+      setLocationn([]);
+      setPositionn([]);
+      setErroLocation(false);
+      setErroPosition(false);
     }
 
     if (!event.target.checked) {
-      full = data?.filter((i) => i.id > 0);
+      full = data?.filter((i) => i.contract === "Full Time" || "Part Time");
       setFullTime(full || []);
+      setLocationn([]);
+      setPositionn([]);
+      setErroLocation(false);
+      setErroPosition(false);
     }
   }
 
@@ -131,6 +144,7 @@ const UseContextJobs = ({ children }: React.PropsWithChildren) => {
         erroPosition,
         erroLocation,
         checkTime,
+        data,
       }}
     >
       {children}
