@@ -4,14 +4,27 @@ import { useFetchJobs } from "../../RequestApi/RequestApi";
 import { UseMedia } from "../../Hooks/UseMedia";
 import { AuthJobs } from "../../Context/ContextThemeColor";
 import Footer from "../../Components/Footer/Footer";
+import { useEffect, useState } from "react";
+import { PropsJobs } from "../../RequestApi/RequestApi";
 
 const JobsInfo: React.FC = () => {
   const { mobile } = UseMedia("(max-width: 767px)");
   const { checkDark } = AuthJobs();
   const { position } = useParams();
   const { data } = useFetchJobs();
-  if (!data) return null;
-  const findJobs = data.find((i) => i.position === position);
+
+  const [findJobs, setFindJobss] = useState<PropsJobs>(() => {
+    const temItem = localStorage.getItem("jobs");
+    return temItem ? JSON.parse(temItem) : null;
+  });
+
+  useEffect(() => {
+    const findJobss = data?.find((i) => i.position === position);
+    if (findJobss) {
+      setFindJobss(findJobss);
+      localStorage.setItem("jobs", JSON.stringify(findJobss));
+    }
+  }, [position, data, findJobs]);
 
   return (
     <S.SectionJobs>

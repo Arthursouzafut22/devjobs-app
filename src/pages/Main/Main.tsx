@@ -4,6 +4,7 @@ import NavSearch from "../../Components/NavSearch/NavSearch";
 import { useLocation } from "react-router-dom";
 import { AuthFilterJobs } from "../../Context/ContextFilterJobs";
 import { Suspense } from "react";
+import { useMemo } from "react";
 
 const Main: React.FC = () => {
   const {
@@ -17,16 +18,19 @@ const Main: React.FC = () => {
   } = AuthFilterJobs();
   const location = useLocation();
 
-  const conditionItems =
-    positionn.length > 0
-      ? positionn
-      : locationn.length > 0
-      ? locationn
-      : checkLength
-      ? data
-      : fullTime.length > 0
-      ? fullTime
-      : data;
+  const conditionItems = useMemo(
+    () =>
+      positionn.length > 0
+        ? positionn
+        : locationn.length > 0
+        ? locationn
+        : checkLength
+        ? data
+        : fullTime.length > 0
+        ? fullTime
+        : data,
+    [positionn, locationn, data, fullTime, checkLength]
+  );
 
   return (
     <>

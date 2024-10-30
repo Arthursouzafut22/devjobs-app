@@ -22,7 +22,7 @@ export type PropsJobs = {
 };
 
 const fetchJobs = async (): Promise<PropsJobs[]> => {
-  const $es = await fetch("data.json");
+  const $es = await fetch("/data.json");
   const $esposta = await $es.json();
   return $esposta;
 };

@@ -10,7 +10,7 @@ const CardsJobs = ({ jobs }: { jobs: PropsJobs }) => {
   return (
     <>
       <NavLink
-        to={`jobs/${encodeURI(jobs.position)}`}
+        to={`jobs/${encodeURIComponent(jobs.position)}`}
         style={{ display: "block", flex: "1 0 290px" }}
       >
         <S.DivCard checkDark={checkDark}>
