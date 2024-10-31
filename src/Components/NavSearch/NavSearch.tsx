@@ -7,11 +7,13 @@ import { IoMdSearch } from "react-icons/io";
 import { FaFilter } from "react-icons/fa";
 import { UseMedia } from "../../Hooks/UseMedia";
 import { AuthFilterJobs } from "../../Context/ContextFilterJobs";
+import ModalMobile from "../ModalMobile/ModalMobile";
 
 const NavSearch = () => {
   const { mobile } = UseMedia("(max-width: 998px)");
   const refNav = useRef<HTMLDivElement | null>(null);
   const [searchBar, setSearchBar] = useState(false);
+  const [activeModal, setActiveModal] = useState(true);
   const {
     filterJobs,
     inputByTitlle,
@@ -27,19 +29,15 @@ const NavSearch = () => {
     function scrollNavSearch() {
       if (element) {
         const top = element.getBoundingClientRect().top;
-
+        const scroolBar = Math.floor(window.scrollY);
+        console.log(scroolBar);
         if (Math.floor(top) < 0) {
           setSearchBar(true);
         }
-        // if (Math.floor(top) > 0) {
-        //   setSearchBar(false);
-        // }
       }
     }
-
     scrollNavSearch();
     window.addEventListener("scroll", scrollNavSearch);
-
     return () => window.removeEventListener("scroll", scrollNavSearch);
   }, [element]); //  Nada por enquanto...
 
@@ -72,11 +70,12 @@ const NavSearch = () => {
         </S.DivSearch>
 
         <S.DivBox checkDark={checkDark} mobile={mobile}>
-          {mobile ? (
-            <S.MobileButton>
+          {mobile && (
+            <S.MobileButton onClick={() => setActiveModal(true)}>
               <FaFilter style={{ fontSize: "20px", color: "#6E8098" }} />
             </S.MobileButton>
-          ) : (
+          )}{" "}
+          {!mobile && (
             <>
               <input
                 type="checkbox"
@@ -88,11 +87,18 @@ const NavSearch = () => {
               <p>Full Time Only</p>
             </>
           )}
-
           <S.WebButton mobile={mobile} onClick={filterJobs}>
-            {mobile ? <IoMdSearch style={{ fontSize: "30px" }} /> : "Search"}
+            {mobile ? (
+              <IoMdSearch style={{ fontSize: " 1.88rem" }} />
+            ) : (
+              "Search"
+            )}
           </S.WebButton>
         </S.DivBox>
+        <ModalMobile
+          activeModal={activeModal}
+          setActiveModal={setActiveModal}
+        />
       </S.Section>
     </S.Wrapper>
   );

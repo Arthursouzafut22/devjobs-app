@@ -12,6 +12,7 @@ body{
   
     font-family: "Kumbh Sans", sans-serif;
     background-color:#F2F2F2;
+    overflow: hidden;
 }
 
 a{

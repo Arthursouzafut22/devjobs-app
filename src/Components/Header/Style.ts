@@ -5,13 +5,13 @@ export const Header = styled.header`
   background-position: 50% 100%;
   background-repeat: no-repeat;
   background-size: cover;
-  padding: 50px 20px 70px 20px;
+  padding: 3.13rem 1.25rem 4.38rem 1.25rem;
 `;
 export const Nav = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 1120px;
+  max-width: 70rem;
   margin: 0 auto;
 
   img {
@@ -27,5 +27,5 @@ export const Nav = styled.nav`
 export const Wrapper = styled.div`
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 0.63rem;
 `;

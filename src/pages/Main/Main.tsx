@@ -38,6 +38,8 @@ const Main: React.FC = () => {
       <S.Main>
         {erroPosition || erroLocation ? (
           <p style={{ color: "#ffffff" }}>Nenhum Job encontrado...</p>
+        ) : erroPosition && erroLocation ? (
+          <p style={{ color: "#ffffff" }}>Nenhum Job encontrado...</p>
         ) : (
           conditionItems &&
           conditionItems.map((jobs) => (
