@@ -9,10 +9,8 @@ export const GlobalStyle = createGlobalStyle`
 }
 
 body{
-  
     font-family: "Kumbh Sans", sans-serif;
-    background-color:#F2F2F2;
-    overflow: hidden;
+    background-color:#F2F2F2;  
 }
 
 a{

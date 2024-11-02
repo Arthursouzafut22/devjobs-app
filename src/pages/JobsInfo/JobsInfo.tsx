@@ -17,7 +17,8 @@ const JobsInfo: React.FC = () => {
     const temItem = localStorage.getItem("jobs");
     return temItem ? JSON.parse(temItem) : null;
   });
-
+  
+  // Efeito para salvar dados no locasStorage...
   useEffect(() => {
     const findJobss = data?.find((i) => i.position === position);
     if (findJobss) {

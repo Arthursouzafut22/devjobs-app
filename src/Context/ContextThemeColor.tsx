@@ -30,6 +30,7 @@ const StorageJobs = ({ children }: React.PropsWithChildren) => {
     localStorage.setItem("theme", JSON.stringify(target.checked));
   };
 
+  // Salvar Tema no localStorage...
   useEffect(() => {
     const getTheme = localStorage.getItem("theme");
     setCheckDark(JSON.parse(getTheme ?? "false"));
@@ -41,9 +42,7 @@ const StorageJobs = ({ children }: React.PropsWithChildren) => {
 
     if (checkDark) {
       bodyBackground.style.background = "#121721";
-    }
-
-    if (!checkDark) {
+    } else if (!checkDark) {
       bodyBackground.style.background = "#F2F2F2";
     }
 

@@ -144,52 +144,46 @@ export const MobileButton = styled.button`
 `;
 
 //Modal....
-
 type PropsModal = {
   columm?: boolean;
   checkDark: boolean | null;
   border?: boolean;
 };
 
-export const SectionWrapper = styled.section`
+export const SectionWrapper = styled.div`
   position: fixed;
-  height: 100vh;
-  top: -126%;
+  top: -127%;
   left: 50%;
-  transform: translateX(-50%);
   width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: rgba(0, 0, 0, 0.538);
   z-index: 400;
   box-sizing: border-box;
-  overflow: hidden;
+  transform: translate(-50%, 0%);
+  padding: 1.5rem;
 `;
 
 export const ModalWrapper = styled.section<{ checkDark: boolean | null }>`
-  position: absolute;
-  transform: translateY(-50%);
-  transform: translateX(-50%);
-  left: 50%;
-  right: 50%;
-  top: 35%;
-  overflow-x: hidden;
-  max-width: 500px;
-  height: 222px;
-  width: 100%;
+  position: relative;
+  max-width: 100%;
   background-color: ${(props) => (props.checkDark ? "#19212E" : "#ffffff")};
   border-radius: 0.375rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  border: 1px solid wheat;
+  padding: 0.63rem;
+  box-sizing: border-box;
   z-index: 500;
 `;
 
 export const DivModal = styled.div<PropsModal>`
   display: flex;
-  align-items: ${(props) => (props.columm ? "start" : "center")};
-  flex-direction: ${(props) => props.columm && "column"};
-  gap: 15px;
-  padding: 20px;
+  align-items: ${(props) => (props.columm ? "flex-start" : "center")};
+  flex-direction: ${(props) => (props.columm ? "column" : "row")};
+  gap: 0.94rem;
+  padding: 1.25rem;
   border-top: ${(props) => props.border && "1px solid"};
   border-color: ${(props) => (props.checkDark ? "#323843" : "#acafb4")};
 
@@ -216,4 +210,27 @@ export const DivModal = styled.div<PropsModal>`
 
 export const ModalButton = styled(WebButton)<{ width: boolean }>`
   max-width: 100%;
+`;
+
+export const ButtonClose = styled.button`
+  font-size: 1.88rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: white;
+  color: white;
+  border-radius: 0.375rem;
+  background-color: transparent;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 999;
+  transition: 0.3s;
+  cursor: pointer;
+  padding: 1.25rem 1.75rem 0 0;
+
+  &:hover {
+    opacity: 0.8;
+  }
 `;

@@ -13,7 +13,7 @@ const NavSearch = () => {
   const { mobile } = UseMedia("(max-width: 998px)");
   const refNav = useRef<HTMLDivElement | null>(null);
   const [searchBar, setSearchBar] = useState(false);
-  const [activeModal, setActiveModal] = useState(true);
+  const [activeModal, setActiveModal] = useState(false);
   const {
     filterJobs,
     inputByTitlle,
