@@ -1,4 +1,4 @@
-import { useRef, useState, useLayoutEffect } from "react";
+import { useState } from "react";
 import * as S from "./Style";
 import SvgSearch from "../../assets/imagens/icon-search.svg";
 import SvgLocation from "../../assets/imagens/icon-location.svg";
@@ -11,8 +11,6 @@ import ModalMobile from "../ModalMobile/ModalMobile";
 
 const NavSearch = () => {
   const { mobile } = UseMedia("(max-width: 998px)");
-  const refNav = useRef<HTMLDivElement | null>(null);
-  const [searchBar, setSearchBar] = useState(false);
   const [activeModal, setActiveModal] = useState(false);
   const {
     filterJobs,
@@ -22,28 +20,10 @@ const NavSearch = () => {
     checkTime,
   } = AuthFilterJobs();
   const { checkDark } = AuthJobs();
-  const element = refNav.current;
-
-  // Scroll effect search nav...
-  useLayoutEffect(() => {
-    function scrollNavSearch() {
-      if (element) {
-        const top = element.getBoundingClientRect().top;
-        const scroolBar = Math.floor(window.scrollY);
-        console.log(scroolBar);
-        if (Math.floor(top) < 0) {
-          setSearchBar(true);
-        }
-      }
-    }
-    scrollNavSearch();
-    window.addEventListener("scroll", scrollNavSearch);
-    return () => window.removeEventListener("scroll", scrollNavSearch);
-  }, [element]); //  Nada por enquanto...
 
   return (
     <S.Wrapper>
-      <S.Section checkDark={checkDark} ref={refNav} searchBar={searchBar}>
+      <S.Section checkDark={checkDark}>
         <S.DivSearch
           width={450}
           checkDark={checkDark}

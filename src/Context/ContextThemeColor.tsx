@@ -42,7 +42,8 @@ const StorageJobs = ({ children }: React.PropsWithChildren) => {
 
     if (checkDark) {
       bodyBackground.style.background = "#121721";
-    } else if (!checkDark) {
+    }
+    if (!checkDark) {
       bodyBackground.style.background = "#F2F2F2";
     }
 

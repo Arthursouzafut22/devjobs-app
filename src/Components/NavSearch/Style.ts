@@ -10,19 +10,15 @@ export const Wrapper = styled.section`
 `;
 
 type PropsSearchBar = {
-  searchBar: boolean;
   checkDark: boolean | null;
 };
 
 export const Section = styled.div<PropsSearchBar>`
-  position: ${(props) => (props.searchBar ? "fixed" : "absolute")};
+  position: absolute;
   top: 0%;
   left: 50%;
-  /* transform:translate(-50%, -45%); */
-  transform: ${(props) =>
-    props.searchBar ? "translate(-50%, 5%)" : "translate(-50%, -45%)"};
-  box-shadow: ${(props) =>
-    props.searchBar ? "0 0 32px -4px rgba(139, 92, 246, 0.5)" : "0 0 0 0 0"};
+  transform: translate(-50%, -45%);
+
   will-change: opacity;
   max-width: 69.88rem;
   width: 100%;

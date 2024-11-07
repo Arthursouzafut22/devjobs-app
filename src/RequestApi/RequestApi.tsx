@@ -1,11 +1,11 @@
 import { useQuery } from "react-query";
 
-type RequirementsProps = {
+interface RequirementsProps {
   content: string;
   items: string[];
-};
+}
 
-export type PropsJobs = {
+export interface PropsJobs {
   id: number;
   company: string;
   logo: string;
@@ -19,7 +19,7 @@ export type PropsJobs = {
   description: string;
   requirements: RequirementsProps;
   role: RequirementsProps;
-};
+}
 
 const fetchJobs = async (): Promise<PropsJobs[]> => {
   const $es = await fetch("/data.json");
