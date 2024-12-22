@@ -75,8 +75,10 @@ const UseContextJobs = ({ children }: React.PropsWithChildren) => {
     setLocationn(location ?? []);
     setCheckLength(valueLocation?.length === 0 && valueTitlle?.length === 0);
 
-    inputByLocation.current.value = "";
-    inputByTitlle.current.value = "";
+    if (inputByLocation.current && inputByTitlle.current) {
+      inputByLocation.current.value = "";
+      inputByTitlle.current.value = "";
+    }
   }
 
   // Verificar se exite jobs por Localização...
